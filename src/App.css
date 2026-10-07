@@ -23,7 +23,6 @@
 .scroll-painting-backdrop {
   position: fixed;
   inset: 0;
-  background-image: url('/scroll_bg.jpg');
   background-position: center 30%;
   background-size: cover;
   background-repeat: no-repeat;

@@ -23,6 +23,7 @@ import {
 import { sound } from './utils/sound';
 import TeaGardenCanvas from './components/TeaGardenCanvas';
 import ZenCatPavilion from './components/ZenCatPavilion';
+import scrollBg from './assets/scroll_bg.jpg';
 import './App.css';
 
 export default function App() {
@@ -243,7 +244,10 @@ export default function App() {
       onMouseLeave={handleMouseLeave}
     >
       {/* 1. Latar Belakang Lukisan Gulungan Kuno Asli */}
-      <div className="scroll-painting-backdrop" />
+      <div
+        className="scroll-painting-backdrop"
+        style={{ backgroundImage: `url(${scrollBg})` }}
+      />
       <div className="silk-parchment-overlay" />
 
       {/* 2. Kanvas Sinematik: Sinar Matahari, Lentera Teratai, Daun & Kupu-kupu */}
