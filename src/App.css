@@ -1,0 +1,1729 @@
+/* =========================================================
+   PAVILIUN TEH KUNO & KUCING TEDUH (100% BAHASA INDONESIA)
+   Estetika Sinematik Menggetarkan Jiwa // Sutra Kuno Klasik
+   ========================================================= */
+
+.app-viewport {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-core);
+  overflow-x: hidden;
+  padding: 1.25rem 1rem;
+}
+
+/* Latar Belakang Lukisan Gulungan Kuno (Reference Image) */
+.scroll-painting-backdrop {
+  position: fixed;
+  inset: 0;
+  background-image: url('/scroll_bg.jpg');
+  background-position: center 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(0.66) contrast(1.08) sepia(0.24);
+  pointer-events: none;
+  z-index: 0;
+  transform: scale(1.04);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Lapisan Efek Tekstur Kertas Sutra Kuno & Pencahayaan Senja */
+.silk-parchment-overlay {
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 90% 80% at 50% 50%, rgba(20, 16, 12, 0.38) 0%, rgba(10, 8, 6, 0.92) 100%),
+    linear-gradient(to bottom, rgba(28, 24, 19, 0.75) 0%, transparent 30%, transparent 70%, rgba(16, 13, 10, 0.9) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bait Pantun / Syair Kedai Teh yang Menyejukkan Jiwa */
+.painting-poem-column {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  z-index: 3;
+  pointer-events: none;
+  background: rgba(26, 20, 14, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(217, 119, 6, 0.4);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(217, 119, 6, 0.15);
+  max-width: 220px;
+}
+
+.poem-title-id {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.35);
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.2rem;
+}
+
+.poem-line-id {
+  font-family: var(--font-serif);
+  font-size: 0.84rem;
+  color: #fef3c7;
+  line-height: 1.5;
+  font-style: italic;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.poem-seal-pill {
+  align-self: flex-start;
+  margin-top: 0.4rem;
+  background: var(--cinnabar-red);
+  color: #fff9ea;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 2px 9px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 230, 180, 0.7);
+  box-shadow: 0 2px 8px rgba(166, 40, 40, 0.4);
+}
+
+/* Stempel-Stempel Cap Segel Kuno Indonesia di Kanan Atas */
+.imperial-seals-cluster {
+  position: fixed;
+  top: 1.25rem;
+  right: 2.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.seal-stamp-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cinnabar-red);
+  color: #fff8e7;
+  font-family: var(--font-serif);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  border: 1.5px solid rgba(255, 235, 195, 0.75);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.seal-oval {
+  width: 44px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.seal-square {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.seal-gourd {
+  width: 46px;
+  height: 54px;
+  border-radius: 14px 14px 18px 18px;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+/* =========================================================
+   NAVBAR / HUD ATAS
+   ========================================================= */
+.scroll-hud-bar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.45rem;
+  background: rgba(28, 22, 16, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(217, 119, 6, 0.45);
+  border-radius: 100px;
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(217, 119, 6, 0.15);
+  margin-bottom: 1.25rem;
+}
+
+.hud-brand-area {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-seal-icon {
+  background: var(--cinnabar-red);
+  color: #fff9ea;
+  border: 1.5px solid rgba(255, 235, 195, 0.7);
+  padding: 0.22rem 0.7rem;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 15px rgba(166, 40, 40, 0.6);
+}
+
+.brand-names h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fef3c7;
+  letter-spacing: 0.06em;
+}
+
+.brand-names p {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: #bfae95;
+  letter-spacing: 0.08em;
+}
+
+.hud-center-motto {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  color: #fde68a;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.3rem 0.9rem;
+  border-radius: 100px;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+.motto-dot {
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #22c55e;
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.85); opacity: 0.5; }
+}
+
+.hud-controls-area {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Musik Kecapi Guzheng Player Toggle */
+.music-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(217, 119, 6, 0.18);
+  border: 1px solid rgba(217, 119, 6, 0.45);
+  color: #fef3c7;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.38rem 0.95rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.music-play-btn:hover {
+  background: rgba(217, 119, 6, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(217, 119, 6, 0.35);
+}
+
+.music-play-btn.playing {
+  background: rgba(166, 40, 40, 0.4);
+  border-color: var(--cinnabar-red);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(166, 40, 40, 0.6);
+  animation: pulseMelody 2s infinite alternate;
+}
+
+@keyframes pulseMelody {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
+}
+
+.theme-pill-box {
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 3px;
+  border-radius: 100px;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+.theme-pill-btn {
+  background: transparent;
+  border: none;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.74rem;
+  font-family: var(--font-serif);
+  color: #cbbba2;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-pill-btn.active {
+  background: rgba(217, 119, 6, 0.35);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.hud-circle-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.4);
+  color: #fef3c7;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.hud-circle-btn:hover {
+  background: rgba(217, 119, 6, 0.3);
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   KARTU GULUNGAN SUTRA (ALBUM LEAF)
+   Mahakarya Sutra Emas & Kertas Mulberi Antik
+   ========================================================= */
+.auth-scroll-viewport {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 510px;
+  margin: auto 0;
+}
+
+.album-leaf-card {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: var(--card-radius);
+  border: 2px solid var(--bg-card-border);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(217, 119, 6, 0.25),
+    inset 0 0 45px rgba(180, 140, 90, 0.2);
+  padding: 1.95rem 2.3rem 2.2rem 2.3rem;
+  transition: transform 0.2s ease-out;
+}
+
+/* Garis Bingkai Tinta Emas Ganda */
+.album-leaf-card::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(168, 140, 98, 0.45);
+  border-radius: calc(var(--card-radius) - 3px);
+  pointer-events: none;
+}
+
+.leaf-corner-knot {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  opacity: 0.75;
+}
+.knot-tl { top: 11px; left: 11px; }
+.knot-tr { top: 11px; right: 11px; transform: scaleX(-1); }
+.knot-bl { bottom: 11px; left: 11px; transform: scaleY(-1); }
+.knot-br { bottom: 11px; right: 11px; transform: scale(-1); }
+
+/* =========================================================
+   PANGGUNG KUCING OYEN & UPACARA TEH
+   ========================================================= */
+.pavilion-cat-tea-stage {
+  position: relative;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+.cat-talk-bubble {
+  position: relative;
+  display: inline-block;
+  background: #ffffff;
+  color: #231c15;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  padding: 0.55rem 1.15rem;
+  border-radius: 14px;
+  border: 1px solid rgba(168, 140, 98, 0.45);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  margin-bottom: 0.85rem;
+  animation: floatBubble 3s ease-in-out infinite alternate;
+  max-width: 92%;
+}
+
+.cat-talk-bubble.poetic-glow {
+  background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+  border-color: rgba(217, 119, 6, 0.4);
+}
+
+@keyframes floatBubble {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+.bubble-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 45px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #ffffff;
+}
+
+.cat-tea-actors-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-bottom: 0.95rem;
+}
+
+/* Kucing Si Oyen */
+.interactive-cat-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.interactive-cat-card:hover {
+  transform: scale(1.08);
+}
+.interactive-cat-card:active {
+  transform: scale(0.96);
+}
+
+.cat-tail-anim {
+  transform-origin: 98px 70px;
+  animation: tailSway 3s ease-in-out infinite;
+}
+
+@keyframes tailSway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(18deg); }
+}
+
+/* Nafas Perut Kucing yang Hidup (Breathing Cat) */
+.breathing-cat {
+  animation: catBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes catBreathe {
+  0% { transform: scaleY(1); }
+  100% { transform: scaleY(1.025) translateY(-1px); }
+}
+
+.paw-floating-bubble {
+  position: absolute;
+  top: -12px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #ea580c;
+  background: #fff;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  animation: pawFly 1.4s forwards;
+  white-space: nowrap;
+}
+
+.paw-floating-bubble.soul-sparkle {
+  color: #b45309;
+  border-color: rgba(217, 119, 6, 0.4);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+}
+
+@keyframes pawFly {
+  0% { opacity: 1; transform: translateY(0) scale(0.8); }
+  100% { opacity: 0; transform: translateY(-45px) scale(1.15); }
+}
+
+/* Cangkir Teh Giok Upacara Panas */
+.interactive-tea-cup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding-bottom: 4px;
+}
+.interactive-tea-cup:hover {
+  transform: translateY(-3px) scale(1.06);
+}
+
+.tea-hot-steams {
+  position: relative;
+  height: 26px;
+  width: 32px;
+}
+
+.steam-line {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 18px;
+  background: rgba(160, 140, 110, 0.55);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: wispRise 2s infinite ease-out;
+}
+.steam-line.golden-steam {
+  background: radial-gradient(circle, rgba(253, 224, 71, 0.7) 0%, rgba(217, 119, 6, 0.3) 100%);
+}
+.line-1 { left: 7px; animation-delay: 0s; }
+.line-2 { left: 14px; animation-delay: 0.6s; }
+.line-3 { left: 21px; animation-delay: 1.2s; }
+
+@keyframes wispRise {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  35% { opacity: 0.8; }
+  100% { transform: translateY(-22px) scaleX(2.6) rotate(16deg); opacity: 0; }
+}
+
+.celadon-green-cup {
+  position: relative;
+  width: 38px;
+  height: 25px;
+  background: linear-gradient(135deg, #748c71 0%, #435b3e 100%);
+  border-radius: 4px 4px 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hot-tea-lake {
+  width: 30px;
+  height: 8px;
+  background: #8aa687;
+  border-radius: 50%;
+  margin-top: -9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bobbing-leaf {
+  font-size: 0.68rem;
+  animation: leafSway 2.5s infinite ease-in-out;
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(16deg); }
+}
+
+.cup-base-ring {
+  position: absolute;
+  bottom: -3px;
+  width: 44px;
+  height: 4px;
+  background: #2e3d2b;
+  border-radius: 50%;
+}
+
+.cup-text-label {
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.74rem;
+  color: var(--ink-secondary);
+}
+
+/* Stempel Merah Auto Isi Berkah */
+.red-seal-action-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.red-seal-action-box:hover {
+  transform: scale(1.12) rotate(3deg);
+}
+.red-seal-action-box:active {
+  transform: scale(0.95);
+}
+
+.red-seal-box-border {
+  width: 42px;
+  height: 42px;
+  background: var(--cinnabar-red);
+  border: 2px solid rgba(255, 240, 200, 0.9);
+  border-radius: 6px;
+  box-shadow: 
+    0 4px 16px rgba(166, 40, 40, 0.6),
+    inset 0 0 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fffbeb;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 0.74rem;
+  line-height: 1.1;
+}
+
+.seal-word-top {
+  letter-spacing: 0.05em;
+}
+.seal-word-sub {
+  font-size: 0.6rem;
+  opacity: 0.9;
+}
+
+.seal-desc-text {
+  margin-top: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--cinnabar-red);
+}
+
+/* Tombol Aksi Penuh Kasih */
+.cat-quick-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.heboh-action-btn {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(168, 140, 98, 0.45);
+  border-radius: 100px;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.heboh-action-btn:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  border-color: var(--cinnabar-red);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  color: var(--cinnabar-red);
+}
+
+.heboh-action-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   HEADER TEKS FORM & TABS
+   ========================================================= */
+.album-header-text {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.album-main-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--ink-primary);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.album-sub-title {
+  font-family: var(--font-serif);
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+.scroll-tab-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(180, 160, 130, 0.25);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(168, 140, 98, 0.4);
+  margin-bottom: 1.4rem;
+}
+
+.scroll-tab-item {
+  background: transparent;
+  border: none;
+  padding: 0.65rem 0.5rem;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.scroll-tab-item.active {
+  color: var(--ink-primary);
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  font-weight: 800;
+}
+
+/* =========================================================
+   FORM INPUTS INDONESIA
+   ========================================================= */
+.ink-form-field {
+  margin-bottom: 1.2rem;
+}
+
+.ink-field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  margin-bottom: 0.38rem;
+  letter-spacing: 0.04em;
+}
+
+.ink-label-accent {
+  color: var(--cinnabar-red);
+  margin-right: 0.35rem;
+}
+
+.ink-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ink-input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--ink-muted);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.ink-brush-input {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid rgba(168, 140, 98, 0.55);
+  border-radius: var(--input-radius);
+  padding: 0.88rem 2.7rem 0.88rem 2.75rem;
+  color: var(--ink-primary);
+  font-size: 0.94rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.ink-brush-input::placeholder {
+  color: rgba(125, 107, 84, 0.6);
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+.ink-brush-input:focus {
+  border-color: var(--ink-primary);
+  box-shadow: 
+    0 0 0 3px rgba(35, 28, 21, 0.16),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.ink-input-container:focus-within .ink-input-icon {
+  color: var(--cinnabar-red);
+}
+
+.ink-clear-btn {
+  position: absolute;
+  right: 0.85rem;
+  background: transparent;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+.ink-clear-btn:hover {
+  color: var(--ink-primary);
+}
+
+/* Meteran Kesaktian Sandi Heboh */
+.harmony-meter-box {
+  margin-top: 0.55rem;
+  background: rgba(180, 160, 130, 0.22);
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(168, 140, 98, 0.35);
+}
+
+.harmony-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.harmony-track {
+  display: flex;
+  gap: 4px;
+  height: 5px;
+  margin-bottom: 0.45rem;
+}
+
+.harmony-seg {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.harmony-seg.seg-1 { background: #ef4444; box-shadow: 0 0 6px #ef4444; }
+.harmony-seg.seg-2 { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; }
+.harmony-seg.seg-3 { background: #3b82f6; box-shadow: 0 0 6px #3b82f6; }
+.harmony-seg.seg-4 { background: #16a34a; box-shadow: 0 0 8px #16a34a; }
+
+.harmony-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  color: var(--ink-muted);
+}
+.harmony-rule-item.pass {
+  color: #15803d;
+  font-weight: 700;
+}
+
+/* Opsi Baris */
+.ink-options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.4rem;
+  font-size: 0.84rem;
+}
+
+.ink-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink-secondary);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ink-checkbox-box {
+  width: 19px;
+  height: 19px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(140, 115, 78, 0.65);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.ink-checkbox-box.checked {
+  background: var(--cinnabar-red);
+  border-color: var(--cinnabar-red);
+  color: #fff;
+}
+
+.forgot-cipher-btn {
+  background: none;
+  border: none;
+  color: var(--cinnabar-red);
+  font-size: 0.84rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  cursor: pointer;
+}
+.forgot-cipher-btn:hover {
+  text-decoration: underline;
+}
+
+/* Tombol Masuk Heboh */
+.ink-submit-bar {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1.45rem;
+  border-radius: var(--btn-radius);
+  border: 1px solid rgba(140, 24, 24, 0.7);
+  background: linear-gradient(
+    135deg,
+    #991b1b 0%,
+    #b91c1c 45%,
+    #7f1d1d 100%
+  );
+  color: #fffdf5;
+  font-size: 1.05rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-shadow: 
+    0 12px 28px rgba(153, 27, 27, 0.52),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+.ink-submit-bar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 18px 35px rgba(153, 27, 27, 0.68),
+    0 4px 14px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.1);
+}
+
+.ink-submit-bar:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.btn-brush-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmerMove 3.2s infinite;
+}
+
+/* Divider & Social Buttons */
+.ink-social-divider {
+  position: relative;
+  text-align: center;
+  margin: 1.45rem 0 1.15rem 0;
+}
+
+.ink-divider-rule {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(140, 115, 78, 0.35);
+}
+
+.ink-divider-text {
+  position: relative;
+  background: #e2d8c2;
+  padding: 0 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--ink-muted);
+}
+
+.ink-social-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.ink-social-btn {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(140, 115, 78, 0.4);
+  border-radius: 8px;
+  padding: 0.68rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.ink-social-btn:hover {
+  background: #ffffff;
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   STATUS SUKSES MASUK
+   ========================================================= */
+.ink-success-box {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.success-seal-round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: var(--cinnabar-red);
+  border: 2px solid rgba(255, 245, 220, 0.9);
+  box-shadow: 0 6px 28px rgba(166, 40, 40, 0.55);
+  margin-bottom: 0.95rem;
+  animation: popSuccess 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-title-cn {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--ink-primary);
+  margin-bottom: 0.3rem;
+}
+
+.success-desc-cn {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  margin-bottom: 1.4rem;
+}
+
+.guest-card-hud {
+  background: #ffffff;
+  border: 1.5px solid rgba(140, 115, 78, 0.45);
+  border-radius: 12px;
+  padding: 1.3rem;
+  margin-bottom: 1.55rem;
+  text-align: left;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.guest-row {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.guest-seal-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--cinnabar-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff9eb;
+  box-shadow: 0 4px 10px rgba(166, 40, 40, 0.3);
+}
+
+.guest-details h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+  margin-bottom: 0.2rem;
+}
+
+.guest-details p {
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+}
+
+.token-seal-strip {
+  margin-top: 0.9rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.74rem;
+  color: var(--cinnabar-red);
+  display: flex;
+  justify-content: space-between;
+}
+
+.leave-garden-btn {
+  width: 100%;
+  padding: 0.92rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(140, 115, 78, 0.35);
+  color: var(--ink-primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+}
+.leave-garden-btn:hover {
+  background: rgba(166, 40, 40, 0.15);
+  color: var(--cinnabar-red);
+  border-color: var(--cinnabar-red);
+}
+
+/* =========================================================
+   MODAL PEMULIHAN SANDI (BAHASA INDONESIA)
+   ========================================================= */
+.ink-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 15, 12, 0.8);
+  backdrop-filter: blur(14px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.ink-modal-box {
+  background: #fdfaf2;
+  border: 2px solid rgba(140, 115, 78, 0.6);
+  border-radius: 14px;
+  padding: 2.2rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+  color: var(--ink-primary);
+}
+
+.ink-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ink-modal-head h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+.close-modal-btn:hover { color: var(--ink-primary); }
+
+/* Footer */
+.scroll-footer-area {
+  position: relative;
+  z-index: 10;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #dfd4bc;
+  font-family: var(--font-sans);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.seal-dot-accent {
+  color: var(--cinnabar-red);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN (DESKTOP, TABLET, MOBILE)
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .painting-poem-column {
+    left: 1rem;
+    padding: 1rem;
+    max-width: 190px;
+  }
+  .imperial-seals-cluster {
+    right: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .painting-poem-column {
+    display: none;
+  }
+  .imperial-seals-cluster {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-viewport {
+    padding: 0.65rem 0.6rem 1.25rem 0.6rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Navbar Mobile */
+  .scroll-hud-bar {
+    padding: 0.5rem 0.75rem;
+    border-radius: 16px;
+    margin-bottom: 0.85rem;
+    gap: 0.4rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hud-brand-area {
+    gap: 0.45rem;
+  }
+
+  .brand-seal-icon {
+    font-size: 0.68rem;
+    padding: 0.18rem 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-names h2 {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-names p {
+    display: none;
+  }
+
+  .hud-center-motto {
+    display: none;
+  }
+
+  .hud-controls-area {
+    gap: 0.35rem;
+  }
+
+  .music-play-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+    gap: 0.35rem;
+    min-height: 34px;
+    touch-action: manipulation;
+  }
+
+  .theme-pill-box {
+    padding: 2px;
+  }
+
+  .theme-pill-btn {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.68rem;
+    min-height: 28px;
+    touch-action: manipulation;
+  }
+
+  .hud-circle-btn {
+    width: 32px;
+    height: 32px;
+    touch-action: manipulation;
+  }
+
+  /* Main Card Mobile */
+  .auth-scroll-viewport {
+    max-width: 100%;
+    width: 100%;
+    margin: 0.5rem auto 1rem auto;
+  }
+
+  .album-leaf-card {
+    padding: 1.25rem 1rem 1.45rem 1rem;
+    border-radius: 18px;
+    box-shadow: 
+      0 12px 35px rgba(0, 0, 0, 0.85),
+      0 0 25px rgba(217, 119, 6, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .album-leaf-card::before {
+    inset: 4px;
+    border-radius: 14px;
+  }
+
+  .leaf-corner-knot {
+    width: 18px;
+    height: 18px;
+    opacity: 0.4;
+  }
+
+  /* Cat & Tea Scene Mobile */
+  .pavilion-cat-tea-stage {
+    margin-bottom: 0.95rem;
+    width: 100%;
+  }
+
+  .cat-talk-bubble {
+    font-size: 0.76rem;
+    padding: 0.45rem 0.8rem;
+    margin-bottom: 0.65rem;
+    max-width: 100%;
+    line-height: 1.42;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .bubble-arrow {
+    left: 40px;
+  }
+
+  .cat-tea-actors-wrapper {
+    gap: 0.8rem;
+    margin-bottom: 0.75rem;
+    justify-content: center;
+  }
+
+  .cat-vector-graphic {
+    width: 102px;
+    height: 74px;
+  }
+
+  .celadon-green-cup {
+    width: 32px;
+    height: 22px;
+  }
+
+  .hot-tea-lake {
+    width: 24px;
+    height: 7px;
+    margin-top: -8px;
+  }
+
+  .cup-text-label {
+    font-size: 0.66rem;
+  }
+
+  .red-seal-box-border {
+    width: 38px;
+    height: 38px;
+    font-size: 0.68rem;
+  }
+
+  .seal-desc-text {
+    font-size: 0.65rem;
+  }
+
+  .cat-quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .heboh-action-btn {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.72rem;
+    flex: 1 1 calc(33.333% - 0.4rem);
+    min-width: 90px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    touch-action: manipulation;
+    box-sizing: border-box;
+  }
+
+  /* Titles & Tabs Mobile */
+  .album-header-text {
+    margin-bottom: 1.1rem;
+  }
+
+  .album-main-title {
+    font-size: 1.35rem;
+    letter-spacing: 0.03em;
+  }
+
+  .album-sub-title {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .scroll-tab-nav {
+    margin-bottom: 1.15rem;
+    gap: 2px;
+    padding: 3px;
+  }
+
+  .scroll-tab-item {
+    font-size: 0.82rem;
+    padding: 0.6rem 0.4rem;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+  }
+
+  /* Form Fields Mobile: 16px font-size to prevent iOS Safari auto-zoom! */
+  .ink-form-field {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .ink-field-label {
+    font-size: 0.74rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .ink-brush-input {
+    font-size: 16px; /* Cegah auto-zoom di browser mobile iOS / Android */
+    padding: 0.82rem 2.4rem 0.82rem 2.5rem;
+    border-radius: 12px;
+    min-height: 46px;
+    box-sizing: border-box;
+  }
+
+  .ink-input-icon {
+    left: 0.85rem;
+  }
+
+  .ink-eye-btn {
+    right: 0.85rem;
+    min-width: 32px;
+    min-height: 32px;
+    touch-action: manipulation;
+  }
+
+  .harmony-meter-box {
+    padding: 0.55rem 0.75rem;
+    border-radius: 10px;
+  }
+
+  .harmony-header {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .harmony-rules {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 0.4rem;
+    font-size: 0.66rem;
+  }
+
+  .ink-options-row {
+    font-size: 0.78rem;
+    margin-bottom: 1.15rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .ink-checkbox-wrap {
+    font-size: 0.78rem;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+  }
+
+  .ink-custom-checkbox {
+    width: 18px;
+    height: 18px;
+  }
+
+  .forgot-cipher-btn {
+    font-size: 0.78rem;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    touch-action: manipulation;
+    padding: 2px 4px;
+  }
+
+  .ink-submit-bar {
+    font-size: 0.94rem;
+    padding: 0.88rem 1rem;
+    min-height: 48px;
+    border-radius: 12px;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .ink-social-divider {
+    margin: 1.15rem 0 0.95rem 0;
+  }
+
+  .ink-divider-text {
+    font-size: 0.7rem;
+    padding: 0 0.6rem;
+  }
+
+  .ink-social-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .ink-social-btn {
+    padding: 0.65rem 0.4rem;
+    font-size: 0.76rem;
+    gap: 0.4rem;
+    min-height: 42px;
+    border-radius: 10px;
+    touch-action: manipulation;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Success View Mobile */
+  .success-seal-round {
+    width: 68px;
+    height: 68px;
+  }
+
+  .success-title-cn {
+    font-size: 1.35rem;
+  }
+
+  .success-desc-cn {
+    font-size: 0.82rem;
+  }
+
+  .guest-card-hud {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .guest-row {
+    gap: 0.8rem;
+  }
+
+  .guest-seal-avatar {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+  }
+
+  .guest-details h4 {
+    font-size: 0.95rem;
+  }
+
+  .token-seal-strip {
+    font-size: 0.66rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  /* Modal Mobile */
+  .ink-modal-backdrop {
+    padding: 1rem;
+  }
+
+  .ink-modal-box {
+    padding: 1.4rem 1.1rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ink-modal-head h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Footer Mobile */
+  .scroll-footer-area {
+    font-size: 0.72rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .footer-dot {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-hud-bar {
+    padding: 0.45rem 0.6rem;
+  }
+
+  .brand-seal-icon {
+    display: none;
+  }
+
+  .brand-names h2 {
+    font-size: 0.82rem;
+  }
+
+  .music-play-btn {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.68rem;
+  }
+
+  .theme-pill-btn {
+    padding: 0.22rem 0.45rem;
+    font-size: 0.65rem;
+  }
+
+  .heboh-action-btn {
+    flex: 1 1 100%;
+    min-height: 34px;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .cat-talk-bubble {
+    font-size: 0.74rem;
+    padding: 0.4rem 0.65rem;
+  }
+
+  .album-main-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .app-viewport {
+    padding: 0.5rem 0.35rem 1rem 0.35rem;
+  }
+
+  .brand-names h2 {
+    font-size: 0.78rem;
+  }
+
+  .music-play-btn span {
+    display: none;
+  }
+
+  .music-play-btn {
+    padding: 0.3rem 0.5rem;
+    min-width: 34px;
+  }
+
+  .theme-pill-box {
+    display: none;
+  }
+
+  .album-leaf-card {
+    padding: 1.1rem 0.75rem 1.35rem 0.75rem;
+    border-radius: 14px;
+  }
+
+  .cat-vector-graphic {
+    width: 86px;
+    height: 62px;
+  }
+
+  .album-main-title {
+    font-size: 1.15rem;
+  }
+
+  .album-sub-title {
+    font-size: 0.72rem;
+  }
+
+  .ink-brush-input {
+    font-size: 16px;
+    padding: 0.75rem 2.2rem 0.75rem 2.3rem;
+  }
+
+  .ink-submit-bar {
+    font-size: 0.86rem;
+    min-height: 44px;
+  }
+
+  .harmony-rules {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .ink-social-row {
+    grid-template-columns: 1fr;
+  }
+}
+

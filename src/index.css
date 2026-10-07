@@ -1,0 +1,78 @@
+:root {
+  --font-serif: 'Noto Serif SC', 'Ma Shan Zheng', serif;
+  --font-calligraphy: 'Ma Shan Zheng', cursive;
+  --font-display: 'Cinzel', 'Noto Serif SC', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+
+  /* Theme: Classic Song/Ming Handscroll (秋園茶興) */
+  --bg-core: #1c1813;
+  --bg-card: rgba(226, 216, 194, 0.94);
+  --bg-card-border: rgba(140, 115, 78, 0.45);
+  --bg-input: rgba(245, 239, 227, 0.9);
+  --bg-input-border: rgba(168, 140, 98, 0.45);
+
+  --ink-primary: #231c15;        /* Deep Soot Ink (松煙墨) */
+  --ink-secondary: #564836;      /* Sepia Brush Ink */
+  --ink-muted: #7d6b54;          /* Soft Tea Wash Ink */
+  --cinnabar-red: #a62828;       /* Imperial Cinnabar Seal (硃砂紅) */
+  --cinnabar-dark: #801818;
+  --celadon-green: #597356;      /* Celadon Green (青瓷綠) */
+  --gold-leaf: #b89447;          /* Aged Gold Foil */
+
+  --card-radius: 14px;
+  --input-radius: 8px;
+  --btn-radius: 8px;
+}
+
+[data-theme="night"] {
+  /* Midnight Ink Wash (夜宴煮茗) */
+  --bg-core: #0e0d0b;
+  --bg-card: rgba(28, 24, 19, 0.92);
+  --bg-card-border: rgba(184, 148, 71, 0.35);
+  --bg-input: rgba(18, 15, 12, 0.85);
+  --bg-input-border: rgba(184, 148, 71, 0.25);
+  --ink-primary: #f2ebd9;
+  --ink-secondary: #c9bea7;
+  --ink-muted: #8c7e68;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-core);
+  color: var(--ink-primary);
+  font-family: var(--font-serif);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Custom Scrollbar styled like aged bamboo */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #181410;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 140, 98, 0.35);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-leaf);
+}
+
+::selection {
+  background: rgba(166, 40, 40, 0.3);
+  color: #1a1612;
+}
